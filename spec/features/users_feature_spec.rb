@@ -34,7 +34,7 @@ feature "User can 'Sign In' and 'Sign Out'" do
 
   context 'a user is signed in' do
     before do
-      Game.create(accuracy: 98, wpm: 128, score: 90)
+      Game.create(accuracy: 98, wpm: 128, score: 90, user_id: 1)
     end
 
     it 'should increase game.count to 1' do

@@ -27,6 +27,9 @@ $(document).ready(function() {
   $(document).one("keypress", function( event ){
     timer = new Timer();
     timer.startTimer();
+    setInterval(function(){
+      document.getElementById('audio').play();
+    }, 10000);
   });
 
   function markChar(type) {
