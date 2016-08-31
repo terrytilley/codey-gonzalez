@@ -1,10 +1,10 @@
 $(document).ready(function() {
 
-  // var text = 'function concatenate(first, last) {\n  var full;\n  full = first + last;\n  return full;\n}';
-  // var comparisontext = 'function concatenate(first, last) {^  var full;^  full = first + last;^  return full;^}';
+  var text = 'function concatenate(first, last) {\n  var full;\n  full = first + last;\n  return full;\n}';
+  var comparisontext = 'function concatenate(first, last) {^  var full;^  full = first + last;^  return full;^}';
 
-  var text = 'function';
-  var comparisontext = 'function';
+  // var text = 'function';
+  // var comparisontext = 'function';
 
   var codeText = text.split('');
   var splitText = comparisontext.split('');
@@ -87,6 +87,6 @@ $(document).ready(function() {
 
   function accuracy(){
     var accuracyScore = (Math.round(100 - (incorrectCount / codeText.length) * 100));
-    document.getElementById('accuracy').innerHTML = "You scored: " + accuracyScore + "%";
+    document.getElementById('accuracy').innerHTML = "Your accuracy: " + accuracyScore + "%";
   }
 });
