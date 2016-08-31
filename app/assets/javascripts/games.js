@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
-  var text = 'function concatenate(first, last) {\n  var full;\n  full = first + last;\n  return full;\n}';
+  var text = "function concatenate(first, last) {\n  var full;\n  full = first + last;\n  return full;\n}";
+  // var comparisontext = text.replace("\n", "^");
   var comparisontext = 'function concatenate(first, last) {^  var full;^  full = first + last;^  return full;^}';
 
   // var text = 'function';
@@ -56,12 +57,11 @@ $(document).ready(function() {
 
   function pressedKey(keycode) {
     if (keycode === 13) {
-  			return '^';
+  		return '^';
     } else {
     return String.fromCharCode(keycode);
+    }
   }
-  }
-
 
   function compare(key, codeText) {
     if(key === codeText[currentCharIndex]) {
@@ -70,13 +70,11 @@ $(document).ready(function() {
      if(currentCharIndex === codeText.length){
        endGame();
      }
-   } else {
+    } else {
       beep();
       markChar('incorrect');
       ++incorrectCount;
-      console.log(incorrectCount);
     }
-
   }
 
   function endGame(){
@@ -84,6 +82,7 @@ $(document).ready(function() {
     timer.endTimer();
     wpm();
     score();
+    playAgain();
   }
 
   function accuracy(){
@@ -99,6 +98,10 @@ $(document).ready(function() {
   function score() {
     totalScore = Math.round(((accuracyScore / 100.00 ) * wordsPerMin) * 20);
     $('#score').text("Score: " + totalScore);
+  }
+
+  function playAgain() {
+    $('#play-again').removeClass('hidden');
   }
 
 });
