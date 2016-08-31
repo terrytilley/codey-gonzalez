@@ -15,10 +15,8 @@ function Timer(){
 
   Timer.prototype.endTimer = function(){
 
-    getSeconds = function(){
-      console.log(seconds);
-      return seconds;
-    };
+    $('#timer').hide();
+    $('#result-time').text("You finished in " + seconds + " seconds.");
 
   };
 

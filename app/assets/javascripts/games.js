@@ -1,11 +1,12 @@
 $(document).ready(function() {
 
-  var text = 'function concatenate(first, last) {\n  var full;\n  full = first + last;\n  return full;\n}';
-  var comparisontext = 'function concatenate(first, last) {^  var full;^  full = first + last;^  return full;^}'; //NEED TO FIND A WAY TO COMPARE ENTER KEY AND NEWLINE
+  var text = 'function';
+  var comparisontext = 'function'; //NEED TO FIND A WAY TO COMPARE ENTER KEY AND NEWLINE
   var codeText = text.split('');
   var splitText = comparisontext.split('');
   var currentCharIndex = 0;
   var incorrectCount = 0;
+  var timer;
 
   (function createText() {
     for (var i = 0; i < codeText.length; i++) {
@@ -20,7 +21,7 @@ $(document).ready(function() {
   })();
 
   $(document).one("keypress", function( event ){
-    var timer = new Timer();
+    timer = new Timer();
     timer.startTimer();
   });
 
@@ -34,13 +35,6 @@ $(document).ready(function() {
       currentChar.setAttribute('style', 'background-color: #ff0000');
     }
   }
-
-
-
-  $(document).one("keypress", function( event ){
-    var timer = new Timer();
-    timer.startTimer();
-  });
 
   (function typing() {
 
@@ -82,9 +76,9 @@ $(document).ready(function() {
   }
 
   function endGame(){
-    console.log("endGame method called");
     accuracy();
     timer.endTimer();
+    console.log(timer.endTimer());
   }
 
   function accuracy(){
