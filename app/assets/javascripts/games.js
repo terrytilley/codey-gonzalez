@@ -83,10 +83,16 @@ $(document).ready(function() {
   }
 
   function endGame(){
+    stopAudio();
     accuracy();
     timer.endTimer();
     wpm();
     console.log(timer.endTimer());
+  }
+
+  function stopAudio(){
+    document.getElementById('audio').pause();
+    audio.src = audio.src;
   }
 
   function accuracy(){
