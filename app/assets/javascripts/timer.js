@@ -1,6 +1,7 @@
 function Timer(){
 
   var seconds;
+  var endTime;
 
   Timer.prototype.startTimer = function(){
 
@@ -15,8 +16,15 @@ function Timer(){
 
   Timer.prototype.endTimer = function(){
 
-    $('#timer').hide();
+    $('#timer').remove();
     $('#result-time').text("You finished in " + seconds + " seconds.");
+    endTime = seconds;
+
+  };
+
+  Timer.prototype.getTime = function(){
+
+    return endTime;
 
   };
 

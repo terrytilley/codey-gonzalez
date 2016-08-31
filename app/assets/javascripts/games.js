@@ -83,7 +83,13 @@ $(document).ready(function() {
   }
 
   function accuracy(){
-    accuracyScore = (Math.round(100 - (incorrectCount / codeText.length) * 100));
-    document.getElementById('accuracy').innerHTML = "You scored: " + accuracyScore + "%";
+    var accuracyScore = (Math.round(100 - (incorrectCount / codeText.length) * 100));
+    $('#accuracy').text("Accuracy: " + accuracyScore + "%");
   }
+
+  function wpm() {
+    var wpm = parseFloat((codeText.length / 5) / ( timer.getTime() / 60.00)).toFixed(2);
+    $('#wpm').text("Words per minute: " + wpm);
+  }
+
 });
