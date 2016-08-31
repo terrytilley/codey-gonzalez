@@ -22,6 +22,10 @@
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="/users">Dashboard</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
             <% if user_signed_in? %>
               <p class="navbar-text"><%= current_user.email %></p>
             <% end %>

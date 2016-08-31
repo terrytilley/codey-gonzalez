@@ -33,22 +33,37 @@ feature "User can 'Sign In' and 'Sign Out'" do
   end
 
   context 'a user is signed in' do
+    before do
+      Game.create(accuracy: 98, wpm: 128, score: 90)
+    end
+
+    it 'should increase game.count to 1' do
+      count = Game.all.count
+      expect(count).to eq 1
+    end
+
     it 'should be able to got to a user dashboard' do
       sign_up
-      click_link "dashboard"
-      expect(current_path).to eq '/user/dashboard'
+      click_link "Dashboard"
+      expect(current_path).to eq '/users'
     end
 
     it 'should show average user accuracy' do
       sign_up
-      click_link "dashboard"
-      expect(page).to have_content(95)
+      click_link "Dashboard"
+      expect(page).to have_content(98)
     end
 
     it 'should show average user WPM' do
       sign_up
-      click_link "dashboard"
-      expect(page).to have_content(44)
+      click_link "Dashboard"
+      expect(page).to have_content(128)
+    end
+
+    it 'should show user score' do
+      sign_up
+      click_link "Dashboard"
+      expect(page).to have_content(90)
     end
 
   end
