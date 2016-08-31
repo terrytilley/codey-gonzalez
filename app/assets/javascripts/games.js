@@ -1,7 +1,11 @@
 $(document).ready(function() {
 
-  var text = 'function concatenate(first, last) {\n  var full;\n  full = first + last;\n  return full;\n}';
-  var comparisontext = 'function concatenate(first, last) {^  var full;^  full = first + last;^  return full;^}';
+  // var text = 'function concatenate(first, last) {\n  var full;\n  full = first + last;\n  return full;\n}';
+  // var comparisontext = 'function concatenate(first, last) {^  var full;^  full = first + last;^  return full;^}';
+
+  var text = 'function';
+  var comparisontext = 'function';
+
   var codeText = text.split('');
   var splitText = comparisontext.split('');
   var currentCharIndex = 0;

@@ -15,7 +15,7 @@ function Timer(){
 
   Timer.prototype.endTimer = function(){
 
-    $('#timer').hide();
+    $('#timer').remove();
     $('#result-time').text("You finished in " + seconds + " seconds.");
 
   };
