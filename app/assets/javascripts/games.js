@@ -11,6 +11,9 @@ $(document).ready(function() {
   var currentCharIndex = 0;
   var incorrectCount = 0;
   var timer;
+  var accuracyScore;
+  var wordsPerMin;
+  var totalScore;
 
   (function createText() {
     for (var i = 0; i < codeText.length; i++) {
@@ -72,6 +75,7 @@ $(document).ready(function() {
        endGame();
      }
    } else {
+      beep();
       markChar('incorrect');
       ++incorrectCount;
       console.log(incorrectCount);
@@ -83,17 +87,22 @@ $(document).ready(function() {
     accuracy();
     timer.endTimer();
     wpm();
-    console.log(timer.endTimer());
+    score();
   }
 
   function accuracy(){
-    var accuracyScore = (Math.round(100 - (incorrectCount / codeText.length) * 100));
+    accuracyScore = (Math.round(100 - (incorrectCount / codeText.length) * 100));
     $('#accuracy').text("Accuracy: " + accuracyScore + "%");
   }
 
   function wpm() {
-    var wpm = parseFloat((codeText.length / 5) / ( timer.getTime() / 60.00)).toFixed(2);
-    $('#wpm').text("Words per minute: " + wpm);
+    wordsPerMin = parseFloat((codeText.length / 5) / ( timer.getTime() / 60.00)).toFixed(2);
+    $('#wpm').text("Words per minute: " + wordsPerMin);
+  }
+
+  function score() {
+    totalScore = Math.round(((accuracyScore / 100.00 ) * wordsPerMin) * 20);
+    $('#score').text("Score: " + totalScore);
   }
 
 });
