@@ -54,14 +54,6 @@ $(document).ready(function() {
     });
   })();
 
-  function addCount(count) {
-    count += 1;
-    if (count === 1){
-      console.log("one key pressed");
-    }
-  }
-
-
   function pressedKey(keycode) {
     if (keycode === 13) {
   			return '^';
