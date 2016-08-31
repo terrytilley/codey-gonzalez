@@ -7,6 +7,7 @@ $(document).ready(function() {
   var currentCharIndex = 0;
   var incorrectCount = 0;
   var timer;
+  var accuracyScore;
 
   (function createText() {
     for (var i = 0; i < codeText.length; i++) {
@@ -27,11 +28,14 @@ $(document).ready(function() {
 
   function markChar(type) {
     var currentChar = document.getElementById('code').children[currentCharIndex];
+    var previousChar = document.getElementById('code').children[currentCharIndex - 1];
     $(currentChar).addClass(type);
+    if ($(previousChar).hasClass('incorrect') ){
+      $(previousChar).removeClass('incorrect');
+    }
   }
 
   (function typing() {
-
     $(document).on("keypress", function( event ) {
       compare(pressedKey(event.keyCode), splitText);
     });
@@ -72,11 +76,14 @@ $(document).ready(function() {
   function endGame(){
     accuracy();
     timer.endTimer();
-    console.log(timer.endTimer());
+    $.post("http://localhost:3000/games",
+      { accuracy: accuracyScore,
+        time: timer.getTime()
+      });
   }
 
   function accuracy(){
-    var accuracyScore = (Math.round(100 - (incorrectCount / codeText.length) * 100));
+    accuracyScore = (Math.round(100 - (incorrectCount / codeText.length) * 100));
     document.getElementById('accuracy').innerHTML = "You scored: " + accuracyScore + "%";
   }
 });
