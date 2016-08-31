@@ -27,13 +27,7 @@ $(document).ready(function() {
 
   function markChar(type) {
     var currentChar = document.getElementById('code').children[currentCharIndex];
-      currentChar.setAttribute('class', type);
-    if (type === 'correct') {
-      currentChar.setAttribute('style', 'background-color: #00ff94');
-    }
-    if (type === 'incorrect') {
-      currentChar.setAttribute('style', 'background-color: #ff0000');
-    }
+    $(currentChar).addClass(type);
   }
 
   (function typing() {
