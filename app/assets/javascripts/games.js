@@ -26,11 +26,26 @@ $(document).ready(function() {
     }
   }
 
+
+
+  $(document).one("keypress", function( event ){
+    var timer = new Timer();
+    timer.startClock();
+  });
+
   (function typing() {
+
     $(document).on("keypress", function( event ) {
       compare(pressedKey(event.keyCode), codeText);
     });
   })();
+
+  function addCount(count) {
+    count += 1;
+    if (count === 1){
+      console.log("one key pressed");
+    }
+  }
 
 
 function pressedKey(keycode) {
