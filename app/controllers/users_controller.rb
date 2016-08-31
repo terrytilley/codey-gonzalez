@@ -1,12 +1,11 @@
 class UsersController < ApplicationController
+
   def index
-    if current_user
-      @user = current_user
-    else
-      redirect_to new_user_session_path
-    end
+    @users = User.all
   end
 
-
+  def show
+    @user = User.find(params[:id])
+  end
 
 end

@@ -1,0 +1,24 @@
+<h1>Hello <%=current_user.email%></h1>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Summary</div>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>WPN</th>
+            <th>Accuracy</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @user.games.each do |game| %>
+              <tr>
+                <td><%=game.accuracy%></td>
+                <td><%=game.wpm%></td>
+                <td><%=game.score %></td>
+              </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>

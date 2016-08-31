@@ -1,13 +1,15 @@
 $(document).ready(function() {
 
   var text = 'function concatenate(first, last) {\n  var full;\n  full = first + last;\n  return full;\n}';
-  var comparisontext = 'function concatenate(first, last) {^  var full;^  full = first + last;^  return full;^}';
+  var comparisontext = 'function concatenate';
+  var rest = '(first, last) {^  var full;^  full = first + last;^  return full;^}';
   var codeText = text.split('');
   var splitText = comparisontext.split('');
   var currentCharIndex = 0;
   var incorrectCount = 0;
   var timer;
   var accuracyScore;
+  var wpmScore;
 
   (function createText() {
     for (var i = 0; i < codeText.length; i++) {
@@ -75,21 +77,23 @@ $(document).ready(function() {
 
   function endGame(){
     accuracy();
+    wpm();
     timer.endTimer();
-    $.post("http://localhost:3000/games",
-      { accuracy: accuracyScore,
-        time: timer.getTime()
-      });
+    $.post("/games",
+      { game:{ accuracy: accuracyScore,
+        score: timer.getTime(),
+        wpm : wpmScore
+      }});
   }
 
   function accuracy(){
-    var accuracyScore = (Math.round(100 - (incorrectCount / codeText.length) * 100));
+    accuracyScore = (Math.round(100 - (incorrectCount / codeText.length) * 100));
     $('#accuracy').text("Accuracy: " + accuracyScore + "%");
   }
 
   function wpm() {
-    var wpm = parseFloat((codeText.length / 5) / ( timer.getTime() / 60.00)).toFixed(2);
-    $('#wpm').text("Words per minute: " + wpm);
+    wpmScore = parseFloat((codeText.length / 5) / ( timer.getTime() / 60.00)).toFixed(2);
+    $('#wpm').text("Words per minute: " + wpmScore);
   }
 
 });

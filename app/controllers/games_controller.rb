@@ -1,13 +1,17 @@
 class GamesController < ApplicationController
+  respond_to :js, :json, :html
 
   def new
-    @user = current_user
     @game = Game.new
   end
 
   def create
-    @user = current_user
-    @game = user.game.build_with_user(game_params, current_user)
+    @game = current_user.games.build_with_user(game_params, current_user)
+    if @game.save
+      redirect_to user_path(current_user)
+    else
+      redirect_to games_path
+    end
   end
 
   private
