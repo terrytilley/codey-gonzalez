@@ -1,11 +1,16 @@
 $(document).ready(function() {
 
   var text = 'function concatenate(first, last) {\n  var full;\n  full = first + last;\n  return full;\n}';
-  var comparisontext = 'function concatenate(first, last) {^  var full;^  full = first + last;^  return full;^}'; //NEED TO FIND A WAY TO COMPARE ENTER KEY AND NEWLINE
+  var comparisontext = 'function concatenate(first, last) {^  var full;^  full = first + last;^  return full;^}';
+
+  // var text = 'function';
+  // var comparisontext = 'function';
+
   var codeText = text.split('');
   var splitText = comparisontext.split('');
   var currentCharIndex = 0;
   var incorrectCount = 0;
+  var timer;
 
   (function createText() {
     for (var i = 0; i < codeText.length; i++) {
@@ -20,8 +25,8 @@ $(document).ready(function() {
   })();
 
   $(document).one("keypress", function( event ){
-    var timer = new Timer();
-    timer.startClock();
+    timer = new Timer();
+    timer.startTimer();
   });
 
   function markChar(type) {
@@ -34,11 +39,6 @@ $(document).ready(function() {
       currentChar.setAttribute('style', 'background-color: #ff0000');
     }
   }
-
-  $(document).one("keypress", function( event ){
-    var timer = new Timer();
-    timer.startClock();
-  });
 
   (function typing() {
 
@@ -80,13 +80,20 @@ $(document).ready(function() {
   }
 
   function endGame(){
-    console.log("endGame method called");
     accuracy();
     timer.endTimer();
+    wpm();
+    console.log(timer.endTimer());
   }
 
   function accuracy(){
     var accuracyScore = (Math.round(100 - (incorrectCount / codeText.length) * 100));
-    document.getElementById('accuracy').innerHTML = "You scored: " + accuracyScore + "%";
+    $('#accuracy').text("Accuracy: " + accuracyScore + "%");
   }
+
+  function wpm() {
+    var wpm = parseFloat((codeText.length / 5) / ( timer.getTime() / 60.00)).toFixed(2);
+    $('#wpm').text("Words per minute: " + wpm);
+  }
+
 });

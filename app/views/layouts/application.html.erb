@@ -26,6 +26,9 @@
             <li><a href="/users">Dashboard</a></li>
             <li><a href="#">Link</a></li>
           </ul>
+            <% if user_signed_in? %>
+              <p class="navbar-text"><%= current_user.email %></p>
+            <% end %>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
