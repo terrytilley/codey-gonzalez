@@ -15,6 +15,11 @@ $(document).ready(function() {
     }
   })();
 
+  $(document).one("keypress", function( event ){
+    var timer = new Timer();
+    timer.startClock();
+  });
+
   function markChar(type) {
     var currentChar = document.getElementById('code').children[currentCharIndex];
       currentChar.setAttribute('class', type);
