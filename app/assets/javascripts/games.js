@@ -42,22 +42,37 @@ $(document).ready(function() {
   })();
 
 
-function pressedKey(keycode) {
-  if (keycode === 13) {
-			return '^';
-  } else {
-  return String.fromCharCode(keycode);
-}
-}
-
-
-function compare(key, splitText) {
-  if(key === splitText[currentCharIndex]) {
-    markChar('correct');
-   ++currentCharIndex;
- } else {
-    markChar('incorrect');
-    ++incorrectCount;
+  function pressedKey(keycode) {
+    if (keycode === 13) {
+  			return '^';
+    } else {
+    return String.fromCharCode(keycode);
   }
-}
+  }
+
+
+  function compare(key, codeText) {
+    if(key === codeText[currentCharIndex]) {
+      markChar('correct');
+     ++currentCharIndex;
+     if(currentCharIndex === codeText.length){
+       endGame();
+     }
+   } else {
+      markChar('incorrect');
+      ++incorrectCount;
+      console.log(incorrectCount);
+    }
+
+  }
+
+  function endGame(){
+    accuracy();
+    timer.endTimer();
+  }
+
+  function accuracy(){
+    var accuracyScore = (Math.round(100 - (incorrectCount / codeText.length) * 100));
+    document.getElementById('accuracy').innerHTML = accuracyScore;
+  }
 });
