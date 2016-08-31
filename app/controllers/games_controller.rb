@@ -1,7 +1,19 @@
 class GamesController < ApplicationController
-  
-  def index
 
+  def new
+    @user = current_user
+    @game = Game.new
   end
-  
+
+  def create
+    @user = current_user
+    @game = user.game.build_with_user(game_params, current_user)
+  end
+
+  private
+
+  def game_params
+    params.require(:game).permit(:accuracy, :wpm, :score)
+  end
+
 end
