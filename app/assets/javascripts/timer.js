@@ -20,4 +20,10 @@ function Timer(){
 
   };
 
+  Timer.prototype.getSeconds = function(){
+
+    return seconds;
+
+  };
+
 }
