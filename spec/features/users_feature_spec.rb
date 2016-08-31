@@ -32,4 +32,25 @@ feature "User can 'Sign In' and 'Sign Out'" do
     end
   end
 
+  context 'a user is signed in' do
+    it 'should be able to got to a user dashboard' do
+      sign_up
+      click_link "dashboard"
+      expect(current_path).to eq '/user/dashboard'
+    end
+
+    it 'should show average user accuracy' do
+      sign_up
+      click_link "dashboard"
+      expect(page).to have_content(95)
+    end
+
+    it 'should show average user WPM' do
+      sign_up
+      click_link "dashboard"
+      expect(page).to have_content(44)
+    end
+
+  end
+
 end

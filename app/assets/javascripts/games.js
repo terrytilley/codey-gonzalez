@@ -82,12 +82,13 @@ $(document).ready(function() {
   }
 
   function endGame(){
+    console.log("endGame method called");
     accuracy();
     timer.endTimer();
   }
 
   function accuracy(){
     var accuracyScore = (Math.round(100 - (incorrectCount / codeText.length) * 100));
-    document.getElementById('accuracy').innerHTML = accuracyScore;
+    document.getElementById('accuracy').innerHTML = "You scored: " + accuracyScore + "%";
   }
 });
