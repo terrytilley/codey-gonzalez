@@ -1,18 +1,22 @@
 $(document).ready(function() {
 
-  var codeText = document.getElementById("test-string").innerText.split('');
+  var text = 'function concatenate(first, last) {\n  var full;\n  full = first + last;\n  return full;\n}';
+  var comparisontext = 'function concatenate(first, last) {^  var full;^  full = first + last;^  return full;^}'; //NEED TO FIND A WAY TO COMPARE ENTER KEY AND NEWLINE
+  var codeText = text.split('');
+  var splitText = comparisontext.split('');
   var currentCharIndex = 0;
   var incorrectCount = 0;
 
-  (function createText( type) {
+  (function createText() {
     for (var i = 0; i < codeText.length; i++) {
-
       var span = document.createElement('span');
       var char = document.createTextNode(codeText[i]);
       span.appendChild(char);
-      span.setAttribute('class', type);
+      span.setAttribute('class', 'initial');
+      span.setAttribute('id', [i]);
       document.getElementById('code').appendChild(span);
     }
+
   })();
 
   $(document).one("keypress", function( event ){
@@ -33,17 +37,22 @@ $(document).ready(function() {
 
   (function typing() {
     $(document).on("keypress", function( event ) {
-      compare(pressedKey(event.keyCode), codeText);
+      compare(pressedKey(event.keyCode), splitText);
     });
   })();
 
 
 function pressedKey(keycode) {
+  if (keycode === 13) {
+			return '^';
+  } else {
   return String.fromCharCode(keycode);
 }
+}
 
-function compare(key, codeText) {
-  if(key === codeText[currentCharIndex]) {
+
+function compare(key, splitText) {
+  if(key === splitText[currentCharIndex]) {
     markChar('correct');
    ++currentCharIndex;
  } else {
