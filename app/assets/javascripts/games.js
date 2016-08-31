@@ -27,7 +27,7 @@ $(document).ready(function() {
   }
 
   (function typing() {
-    $("#typing").on("keypress", function( event ) {
+    $(document).on("keypress", function( event ) {
       compare(pressedKey(event.keyCode), codeText);
     });
   })();
