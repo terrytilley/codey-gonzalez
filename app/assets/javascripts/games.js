@@ -21,7 +21,7 @@ $(document).ready(function() {
 
   $(document).one("keypress", function( event ){
     var timer = new Timer();
-    timer.startClock();
+    timer.startTimer();
   });
 
   function markChar(type) {
@@ -39,7 +39,7 @@ $(document).ready(function() {
 
   $(document).one("keypress", function( event ){
     var timer = new Timer();
-    timer.startClock();
+    timer.startTimer();
   });
 
   (function typing() {

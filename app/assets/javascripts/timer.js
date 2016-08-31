@@ -1,19 +1,24 @@
 function Timer(){
 
-  Timer.prototype.startClock = function(total_seconds){
+  var seconds;
+
+  Timer.prototype.startTimer = function(){
 
     var start = new Date();
-    var seconds;
 
     globalTimer = setInterval(function() {
       seconds = ((new Date() - start) / parseFloat(1000)).toFixed(2);
       $('#timer').text(seconds + " Seconds");
     }, 10);
 
-    this.getSeconds = function(){
+  };
+
+  Timer.prototype.endTimer = function(){
+
+    getSeconds = function(){
+      console.log(seconds);
       return seconds;
     };
-
 
   };
 
