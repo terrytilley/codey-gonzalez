@@ -82,11 +82,18 @@ $(document).ready(function() {
   function endGame(){
     accuracy();
     timer.endTimer();
+    wpm();
     console.log(timer.endTimer());
   }
 
   function accuracy(){
     var accuracyScore = (Math.round(100 - (incorrectCount / codeText.length) * 100));
-    document.getElementById('accuracy').innerHTML = "Your accuracy: " + accuracyScore + "%";
+    $('#accuracy').text("Accuracy: " + accuracyScore + "%");
   }
+
+  function wpm() {
+    var wpm = parseFloat((codeText.length / 5) / ( timer.getTime() / 60.00)).toFixed(2);
+    $('#wpm').text("Words per minute: " + wpm);
+  }
+
 });
