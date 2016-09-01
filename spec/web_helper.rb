@@ -6,3 +6,8 @@ def sign_up
   fill_in('Password confirmation', with: 'qwerty')
   click_button('Sign Up')
 end
+
+def build_with_user(attributes = {}, user)
+  attributes[:user] ||= user
+  build(attributes)
+end

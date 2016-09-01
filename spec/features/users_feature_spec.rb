@@ -21,7 +21,6 @@ feature "User can 'Sign In' and 'Sign Out'" do
     end
 
     it "should see 'Sign Out' link" do
-      visit('/')
       expect(page).to have_link('Sign Out')
     end
 
@@ -34,48 +33,38 @@ feature "User can 'Sign In' and 'Sign Out'" do
 
   context 'a user is signed in' do
     before do
-      Game.create(accuracy: 98, wpm: 128, score: 90, duration: 30, user_id: 1)
+      sign_up
+      id = User.first.id
+      Game.create(accuracy: 98, wpm: 128, score: 90, duration: 30, user_id: id).save(:validate => false)
     end
 
-    # it 'should increase game count to 1' do
-    #   count = Game.count
-    #   puts count
-    #   expect(count).to change.by 1
-    # end
+    it 'should increase game count to 1' do
+      count = Game.count
+      puts count
+      expect(count).to eq(1)
+    end
 
     it 'should be able to got to a user dashboard' do
-      sign_up
       click_link "test@example.com"
       id = User.first.id
       expect(current_path).to eq "/users/#{id}"
     end
 
-
-    # it 'should show average user accuracy' do
-    #   sign_up
-    #   click_link "test@example.com"
-    #   expect(page).to have_content(98)
-    # end
-
     it 'should show average user accuracy' do
-      sign_up
       click_link "test@example.com"
       expect(page).to have_content(98)
     end
 
 
-    # it 'should show average user WPM' do
-    #   sign_up
-    #   click_link "test@example.com"
-    #
-    #   expect(page).to have_content(128)
-    # end
+    it 'should show average user WPM' do
+      click_link "test@example.com"
+      expect(page).to have_content(128)
+    end
 
-    # it 'should show user score' do
-    #   sign_up
-    #   click_link "test@example.com"
-    #   expect(page).to have_content(90)
-    # end
+    it 'should show user score' do
+      click_link "test@example.com"
+      expect(page).to have_content(90)
+    end
 
   end
 
