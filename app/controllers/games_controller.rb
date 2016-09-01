@@ -1,5 +1,9 @@
 class GamesController < ApplicationController
 
+  def index
+    @code = Code.find(rand(1..5))
+  end
+
   def new
     @game = Game.new
   end

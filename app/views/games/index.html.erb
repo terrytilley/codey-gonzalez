@@ -3,8 +3,9 @@
     <source src="/assets/Andalay.mp3" type="audio/mp3" />
   </audio>
 
-  <div hidden id="test-string">function</div>
-
+  <h2>Language: <%= @code.language %></h2>
+  <h3>Difficulty: <%= @code.level %></h3>
+  <div hidden id="test-string"><%= @code.content %></div>
 
 <div id="container">
   <h1 id='start-typing'>Start typing to begin...</h1><br>
