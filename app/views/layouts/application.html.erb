@@ -19,7 +19,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/games" onClick="window.location.reload();" onfocus="tabs()">
+          <a class="navbar-brand" href="/games" onfocus="tabs()">
             <img class="pull-left" width="30" src="/img/logo.png" alt="Brand">
             <span>Codey Gonzalez</span>
           </a>
@@ -29,7 +29,6 @@
           <ul class="nav navbar-nav">
             <li><a href="/users">Leaderboard</a></li>
             <% if user_signed_in? %>
-              <li><%= link_to "Play", games_path %></li>
               <li><%= link_to "#{current_user.email}", user_path(current_user) %></li>
             <% end %>
           </ul>
