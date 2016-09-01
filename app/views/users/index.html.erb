@@ -1,6 +1,27 @@
-<h1>Hello <%=@user.email%></h1>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Leader Board</div>
 
-<%= @game.each do |game|
-    game.accuracy
-    game.wpm
-    game.score end %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>WPN</th>
+        <th>Accuracy</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%=user.email%></td>
+          <% user.games.each do |game|%>
+            <td><%=game.accuracy%></td>
+            <td><%=game.wpm%></td>
+            <td><%=game.score %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

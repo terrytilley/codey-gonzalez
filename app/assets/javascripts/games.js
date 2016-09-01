@@ -1,16 +1,13 @@
 $(document).ready(function() {
 
-  var text = "function concatenate(first, last) {\n  var full;\n  full = first + last;\n  return full;\n}";
-  // var comparisontext = text.replace("\n", "^");
-  var comparisontext = 'function concatenate(first, last) {^  var full;^  full = first + last;^  return full;^}';
-  var codeText = text.split('');
-  var splitText = comparisontext.split('');
+  var codeText = document.getElementById('test-string').innerHTML.split('');
   var currentCharIndex = 0;
   var incorrectCount = 0;
   var timer;
   var accuracyScore;
   var wordsPerMin;
   var totalScore;
+  var wpmScore;
 
   (function createText() {
     for (var i = 0; i < codeText.length; i++) {
@@ -50,15 +47,16 @@ $(document).ready(function() {
 
   (function typing() {
     $(document).on("keypress", function( event ) {
-      compare(pressedKey(event.keyCode), splitText);
+      compare(pressedKey(event.keyCode), codeText);
     });
   })();
 
   function pressedKey(keycode) {
+    console.log(codeText);
     if (keycode === 13) {
-  		return '^';
+  			return '\n';
     } else {
-    return String.fromCharCode(keycode);
+      return String.fromCharCode(keycode);
     }
   }
 
@@ -69,8 +67,8 @@ $(document).ready(function() {
      if(currentCharIndex === codeText.length){
        endGame();
      }
-    } else {
-      beep();
+   } else {
+       beep();
       markChar('incorrect');
       ++incorrectCount;
     }
@@ -78,17 +76,18 @@ $(document).ready(function() {
 
   function endGame(){
     document.getElementById('audio').play();
-    // stopAudio();
     accuracy();
-    timer.endTimer();
-    $.post("http://localhost:3000/games",
-      { accuracy: accuracyScore,
-        time: timer.getTime()
-      });
     wpm();
-    score();
     playAgain();
     showCodey();
+    timer.endTimer();
+    $.post("/games",
+      { game:{
+        accuracy: accuracyScore,
+        score: totalScore,
+        wpm: wpmScore,
+        duration: timer.getTime(),
+      }});
   }
 
   function stopAudio(){
@@ -118,6 +117,5 @@ $(document).ready(function() {
   function showCodey() {
     $('#codey').removeClass('hidden');
   }
-
 
 });
