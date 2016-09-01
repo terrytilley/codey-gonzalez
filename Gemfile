@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'jquery-turbolinks'
 
 # Users
 gem 'devise'
@@ -32,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'launchy'
 gem 'pry'
+gem 'poltergeist'
+gem 'database_cleaner'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -52,6 +55,7 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'rspec-wait', '~> 0.0.8'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
