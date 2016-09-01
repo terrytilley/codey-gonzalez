@@ -7,8 +7,7 @@
         <th>#</th>
         <th>User</th>
         <th>Accuracy(%)</th>
-        <th>WPN</th>
-        <th>Time(s)</th>
+        <th>WPM</th>
         <th>Score</th>
       </tr>
     </thead>
@@ -20,8 +19,7 @@
           <th scope="row"><%= count %></th>
           <td><%=user.email.split('@')[0]%></td>
           <td><%= user.average_accuracy(user) %></td>
-          <td><%= user.average_score(user) %></td>
-          <td><%= user.average_score(user) %></td>
+          <td><%= user.average_wpm(user) %></td>
           <td><%= user.average_score(user) %></td>
         </tr>
         <% count += 1 %>

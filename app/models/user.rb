@@ -52,6 +52,7 @@ class User < ApplicationRecord
     count = 0
     user.games.each do |game|
         count += 1
+        puts game.score
         total += game.score
     end
     return total/count
