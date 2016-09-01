@@ -50,11 +50,19 @@ feature "User can 'Sign In' and 'Sign Out'" do
       expect(current_path).to eq "/users/#{id}"
     end
 
+
     # it 'should show average user accuracy' do
     #   sign_up
     #   click_link "test@example.com"
     #   expect(page).to have_content(98)
     # end
+
+    it 'should show average user accuracy' do
+      sign_up
+      click_link "test@example.com"
+      expect(page).to have_content(98)
+    end
+
 
     # it 'should show average user WPM' do
     #   sign_up

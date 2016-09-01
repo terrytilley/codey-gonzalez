@@ -8,7 +8,11 @@ feature "a game can be played" do
       visit('/')
       save_and_open_page
       within("#prompt-container") do
+<<<<<<< HEAD:spec/features/game_spec.rb
         expect(page).to have_selector('initial')
+=======
+        wait(3.seconds).for { page }.to have_selector('initial')
+>>>>>>> 9d2db461f7aab0fd37907a038c2bdd2da9dccf42:spec/features/game_feature_spec.rb
       end
     end
 
