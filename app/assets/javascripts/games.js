@@ -1,5 +1,3 @@
-$(document).on("turbolinks:load", (function(){
-
 var Game = (function () {
 
   var currentCharIndex = 0;
@@ -72,4 +70,3 @@ var Game = (function () {
   };
 
 })();
-}));
