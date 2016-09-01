@@ -2,6 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#audio {
+  display: none;
+}
+
+.code-type {
+  font-size: 18px;
+}
+
+#start-typing {
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
 span.correct {
   background-color: #00ff94;
 }
@@ -14,39 +27,28 @@ span.active {
   background-color: #2971d1;
 }
 
-#start-typing {
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: 0.1rem;
-}
-
 #code {
   background-color: white;
-  max-width: 70%;
   font-size: 2rem;
 }
 
 #results {
   font-family: 'Montserrat', sans-serif;
   font-size: 2.4rem;
+  margin-bottom: 30px;
 }
 
 #timer {
-  font-size: 1.8rem;
-}
-
-#codey {
-  float:right;
-  width: 50%;
+  font-size: 24px;
+  margin-left: 0px;
+  position: absolute;
+  top: -5px;
 }
 
 button.hidden {
   display: none;
 }
 
-img {
-  max-width: 30%;
-}
-
-h3 {
-  font-family: 'Montserrat', sans-serif;
+.type-info {
+  margin-bottom: 15px;
 }

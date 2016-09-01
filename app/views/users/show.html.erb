@@ -1,34 +1,53 @@
-<h1>Hello <%=current_user.email%></h1>
+<div class="page-header">
+  <h1>Scoreboard <small><%=current_user.email%></small></h1>
+</div>
 
     <div class="panel panel-default">
       <div class="panel-heading"><b>Average Summary</b></div>
       <div class="panel-body">
         <% if @user.games.any? %>
-            Accuracy  <%= current_user.average_accuracy(current_user) %>
-            WPM  <%= current_user.average_wpm(current_user) %>
-            Score <%= current_user.average_score(current_user) %>
+        <div class="row">
+          <div class="col-sm-3 text-left">
+            <b>Accuracy:</b> <%= current_user.average_accuracy(current_user) %>%
+          </div>
+
+          <div class="col-sm-3 text-left">
+            <b>WPN:</b> <%= current_user.average_wpm(current_user) %>
+          </div>
+
+          <div class="col-sm-3 text-left">
+            <b>Time:</b> <%= current_user.average_time(current_user) %>
+          </div>
+
+          <div class="col-sm-3 text-left">
+            <b>Score:</b> <%= current_user.average_score(current_user) %>
+          </div>
+        </<div></div>
+            <!-- Accuracy:  <%= current_user.average_accuracy(current_user) %>
+            WPN:  <%= current_user.average_wpm(current_user) %>
+            Time:  <%= current_user.average_time(current_user) %>
+            Score: <%= current_user.average_score(current_user) %> -->
         <% end %>
       </div>
     </div>
-    <div class="panel panel-default">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Accuracy(%)</th>
-            <th>WPM</th>
-            <th>Time(s)</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody>
-            <% @user.games.each do |game| %>
-              <tr>
-                <td><%=game.accuracy%></td>
-                <td><%=game.wpm%></td>
-                <td><%=game.duration%></td>
-                <td><%=game.score %></td>
-              </tr>
-            <% end %>
-        </tbody>
-      </table>
-    </div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Accuracy</th>
+          <th>WPN</th>
+          <th>Time</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% @user.games.each do |game| %>
+            <tr>
+              <td><%=game.accuracy%></td>
+              <td><%=game.wpm%></td>
+              <td><%=game.duration%></td>
+              <td><%=game.score %></td>
+            </tr>
+          <% end %>
+      </tbody>
+    </table>
