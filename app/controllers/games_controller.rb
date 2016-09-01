@@ -1,13 +1,13 @@
 class GamesController < ApplicationController
 
   def new
-    @user = current_user
+    @user = User.find(params[:id])
     @game = Game.new
   end
 
   def create
     @user = current_user
-    @game = user.game.build_with_user(game_params, current_user)
+    @game = @user.game.build_with_user(game_params, current_user)
   end
 
   private
