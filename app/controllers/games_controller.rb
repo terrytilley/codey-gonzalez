@@ -1,6 +1,10 @@
 class GamesController < ApplicationController
   respond_to :js, :json, :html
 
+  def index
+    @code = Code.find(rand(1..5))
+  end
+
   def new
     @game = Game.new
   end
