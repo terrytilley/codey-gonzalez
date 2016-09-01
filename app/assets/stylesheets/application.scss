@@ -14,5 +14,64 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap-sprockets";
- @import "bootstrap";
+@import "variables";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import 'https://fonts.googleapis.com/css?family=Montserrat:400,700';
+@import 'https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700';
+
+$red:   #E63946;
+$green: #042A2B;
+
+.navbar {
+  border-radius: 0;
+  margin-bottom: 50px;
+}
+
+a.navbar-brand {
+  font-weight: 700;
+}
+
+a.navbar-brand img {
+  position: absolute;
+  top: 10px;
+}
+
+a.navbar-brand span {
+  margin-left: 35px;
+}
+
+pre {
+  font-family: 'Source Code Pro', monospace;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $red;
+  margin-top: 0;
+}
+
+.alert {
+  margin-bottom: 40px;
+}
+
+.page-header h1 {
+  font-weight: 700;
+}
+
+.footer {
+  color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: $green;
+}
+
+.footer p {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin: 0;
+}
+
+.footer a {
+  color: white;
+}

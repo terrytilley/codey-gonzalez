@@ -4,29 +4,40 @@
   </audio>
 
   <div id="container">
-    <h1 id='start-typing'>Start typing to begin...</h1><br>
-  <div id="container">
 
-  <h4><%= @code.language.capitalize %> | <%= @code.difficulty(@code.level) %></h4>
-  <div hidden id="test-string"><%= @code.content %></div>
+    <h1 id="start-typing">Start typing to begin...</h1>
 
-  <div id="prompt-container">
-    <pre id="code"></pre>
+    <div class="row type-info">
+      <div class="col-sm-11">
+        <div class="code-type"><b><%= @code.language.capitalize %></b> | <%= @code.difficulty(@code.level) %></div>
+      </div>
+
+      <div class="col-sm-1">
+        <div id="timer"></div>
+      </div>
+    </div>
+
+    <div hidden id="test-string"><%= @code.content %></div>
+
+    <div id="prompt-container">
+      <pre id="code"></pre>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div id="results">
+          <div id="result-time"></div>
+          <div id="wpm"></div>
+          <div id="accuracy"></div>
+          <div id="score"></div>
+        </div>
+        <button id='play-again' type="button" onClick="window.location.reload();" class="btn btn-primary btn-lg hidden">Play Again</button>
+      </div>
+
+      <div class="col-sm-6">
+        <img id='codey' width="400" src="http://ih0.redbubble.net/image.89657688.8015/flat,1000x1000,075,f.jpg" alt="codey" class='center-block hidden'/>
+      </div>
+    </div>
 
   </div>
-  <div id="timer"></div>
-
-  <div id="results">
-    <div id="result-time"></div>
-    <div id="wpm"></div>
-    <div id="accuracy"></div>
-    <div id="score"></div>
-  </div>
-<br>
-<button id='play-again' type="button" onClick="window.location.reload();" class="btn-primary hidden">Play again</button>
-
-
-  <img id='codey' src="http://ih0.redbubble.net/image.89657688.8015/flat,1000x1000,075,f.jpg" alt="codey" class='hidden'/>
-
-</div>
 </body>

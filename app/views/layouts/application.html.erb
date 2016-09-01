@@ -19,8 +19,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/" onClick="window.location.reload();">Codey Gonzalez</a>
-          <!-- <%= link_to "Codey Gonzalez", root_path, :class => 'navbar-brand' %> -->
+          <a class="navbar-brand" href="/games" onClick="window.location.reload();" onfocus="tabs()">
+            <img class="pull-left" width="30" src="/img/logo.png" alt="Brand">
+            <span>Codey Gonzalez</span>
+          </a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -54,5 +56,23 @@
 
       <%= yield %>
     </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-center">Developed with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="#">Suse</a>, <a href="#">Mike</a>, <a href="#">Aga</a>, <a href="#">Mali</a> and <a href="#">Terry</a></p>
+      </div>
+    </footer>
+
+    <script src="https://use.fontawesome.com/3e43ba005d.js"></script>
+
+    <!-- <div class="tabs"><a href="#">Tabs</a></div> -->
+    <!-- <script>
+      function tabs() {
+        console.log('focused!');
+        $( ".tabs" ).click(function() {
+          alert( "Handler for .click() called." );
+        });
+      }
+    </script> -->
   </body>
 </html>
