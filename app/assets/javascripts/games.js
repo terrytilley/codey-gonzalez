@@ -1,10 +1,6 @@
 $(document).ready(function() {
 
-  var text = 'function concatenate(first, last) {\n  var full;\n  full = first + last;\n  return full;\n}';
-  var comparisontext = 'function concatenate';
-  var rest = '(first, last) {^  var full;^  full = first + last;^  return full;^}';
-  var codeText = text.split('');
-  var splitText = comparisontext.split('');
+  var codeText = document.getElementById('test-string').innerHTML.split('');
   var currentCharIndex = 0;
   var incorrectCount = 0;
   var timer;
@@ -30,16 +26,16 @@ $(document).ready(function() {
 
   function markChar(type) {
     var currentChar = document.getElementById('code').children[currentCharIndex];
-    var previousChar = document.getElementById('code').children[currentCharIndex - 1];
+    // var previousChar = document.getElementById('code').children[currentCharIndex - 1];
     $(currentChar).addClass(type);
-    if ($(previousChar).hasClass('incorrect') ){
-      $(previousChar).removeClass('incorrect');
-    }
+    // if ($(previousChar).hasClass('incorrect') ){
+    //   $(previousChar).removeClass('incorrect');
+    // }
   }
 
   (function typing() {
     $(document).on("keypress", function( event ) {
-      compare(pressedKey(event.keyCode), splitText);
+      compare(pressedKey(event.keyCode), codeText);
     });
   })();
 
@@ -52,21 +48,22 @@ $(document).ready(function() {
 
 
   function pressedKey(keycode) {
+    console.log(codeText);
     if (keycode === 13) {
-  			return '^';
+  			return '\n';
     } else {
-    return String.fromCharCode(keycode);
-  }
+      return String.fromCharCode(keycode);
+    }
   }
 
 
   function compare(key, codeText) {
     if(key === codeText[currentCharIndex]) {
       markChar('correct');
-     ++currentCharIndex;
-     if(currentCharIndex === codeText.length){
-       endGame();
-     }
+      ++currentCharIndex;
+      if(currentCharIndex === codeText.length){
+        endGame();
+      }
    } else {
       markChar('incorrect');
       ++incorrectCount;
