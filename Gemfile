@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'launchy'
 gem 'pry'
+gem 'poltergeist'
+gem 'database_cleaner'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

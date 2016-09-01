@@ -4,27 +4,12 @@ feature "a game can be played" do
 
   context "on page load code should be displayed" do
 
-    it "should display an exemplar code to copy" do
+    it "should display an exemplar code to copy", js: true do
       visit('/')
-      save_and_open_page
       within("#prompt-container") do
-<<<<<<< HEAD:spec/features/game_spec.rb
-        expect(page).to have_selector('initial')
-=======
-        wait(3.seconds).for { page }.to have_selector('initial')
->>>>>>> 9d2db461f7aab0fd37907a038c2bdd2da9dccf42:spec/features/game_feature_spec.rb
+        expect(page).to have_selector('span')
       end
     end
 
-  # context '' do
-  #   let(:codeText){ "function" }
-  #   it 'should'
-  #
-  #   end
-  # end
-  # context 'the last keystroke ends the game' do
-  #   it 'should call endGame() once the last character is matched' do
-  #
-  #   end
   end
 end
