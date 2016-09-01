@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on("turbolinks:load", (function(){
 
   codeText = document.getElementById('test-string').innerHTML.split('');
 
@@ -21,4 +21,4 @@ $(document).ready(function() {
     Timer.startTimer();
   });
 
-});
+}));

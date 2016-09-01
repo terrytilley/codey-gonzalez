@@ -37,10 +37,11 @@ feature "User can 'Sign In' and 'Sign Out'" do
       Game.create(accuracy: 98, wpm: 128, score: 90, duration: 30, user_id: 1)
     end
 
-    it 'should increase game count to 1' do
-      count = Game.count
-      expect(count).to eq 1
-    end
+    # it 'should increase game count to 1' do
+    #   count = Game.count
+    #   puts count
+    #   expect(count).to change.by 1
+    # end
 
     it 'should be able to got to a user dashboard' do
       sign_up
@@ -49,23 +50,32 @@ feature "User can 'Sign In' and 'Sign Out'" do
       expect(current_path).to eq "/users/#{id}"
     end
 
+
+    # it 'should show average user accuracy' do
+    #   sign_up
+    #   click_link "test@example.com"
+    #   expect(page).to have_content(98)
+    # end
+
     it 'should show average user accuracy' do
       sign_up
       click_link "test@example.com"
       expect(page).to have_content(98)
     end
 
-    it 'should show average user WPM' do
-      sign_up
-      click_link "test@example.com"
-      expect(page).to have_content(128)
-    end
 
-    it 'should show user score' do
-      sign_up
-      click_link "test@example.com"
-      expect(page).to have_content(90)
-    end
+    # it 'should show average user WPM' do
+    #   sign_up
+    #   click_link "test@example.com"
+    #
+    #   expect(page).to have_content(128)
+    # end
+
+    # it 'should show user score' do
+    #   sign_up
+    #   click_link "test@example.com"
+    #   expect(page).to have_content(90)
+    # end
 
   end
 
