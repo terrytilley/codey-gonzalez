@@ -52,7 +52,6 @@ feature "User can 'Sign In' and 'Sign Out'" do
     it 'should show average user accuracy' do
       sign_up
       click_link "test@example.com"
-      save_and_open_page
       expect(page).to have_content(98)
     end
 
