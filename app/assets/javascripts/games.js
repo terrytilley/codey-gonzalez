@@ -31,9 +31,9 @@ $(document).ready(function() {
   $(document).one("keypress", function( event ){
     timer = new Timer();
     timer.startTimer();
-    setInterval(function(){
-      document.getElementById('audio').play();
-    }, 10000);
+    // setInterval(function(){
+    //   document.getElementById('audio').play();
+    // }, 10000);
   });
 
   function markChar(type) {
@@ -81,12 +81,14 @@ $(document).ready(function() {
   }
 
   function endGame(){
-    stopAudio();
+    document.getElementById('audio').play();
+    // stopAudio();
     accuracy();
     timer.endTimer();
     wpm();
     score();
     playAgain();
+    showCodey();
   }
 
   function stopAudio(){
@@ -112,5 +114,10 @@ $(document).ready(function() {
   function playAgain() {
     $('#play-again').removeClass('hidden');
   }
+
+  function showCodey() {
+    $('#codey').removeClass('hidden');
+  }
+
 
 });
