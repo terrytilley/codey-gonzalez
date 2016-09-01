@@ -58,10 +58,12 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
+.wrapper {
+  min-height: calc(100vh - 50px);
+}
+
 .footer {
   color: white;
-  position: absolute;
-  bottom: 0;
   width: 100%;
   background-color: $green;
 }
