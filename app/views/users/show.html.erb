@@ -5,8 +5,7 @@
       <div class="panel-body">
         <% if @user.games.any? %>
             Accuracy  <%= current_user.average_accuracy(current_user) %>
-            WPN  <%= current_user.average_wpm(current_user) %>
-            Time  <%= current_user.average_time(current_user) %>
+            WPM  <%= current_user.average_wpm(current_user) %>
             Score <%= current_user.average_score(current_user) %>
         <% end %>
       </div>
@@ -15,9 +14,9 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Accuracy</th>
-            <th>WPN</th>
-            <th>Time</th>
+            <th>Accuracy(%)</th>
+            <th>WPM</th>
+            <th>Time(s)</th>
             <th>Score</th>
           </tr>
         </thead>
