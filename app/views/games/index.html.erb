@@ -2,12 +2,9 @@
   <audio style="visibility: hidden" controls="controls" id="audio">
     <source src="/assets/Andalay.mp3" type="audio/mp3" />
   </audio>
-
-  <div hidden id="test-string">function concatenate(first, last) {
-  var full;
-  full = first + last;
-  return full;
-}</div>
+  <h2>Language: <%= @code.language %></h2>
+  <h3>Difficulty: <%= @code.level %></h3>
+  <div hidden id="test-string"><%= @code.content %></div>
 
 
 <div id="container">
