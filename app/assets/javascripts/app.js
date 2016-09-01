@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
-  var codeText = document.getElementById('test-string').innerHTML.split('');
-  var timer;
+  codeText = document.getElementById('test-string').innerHTML.split('');
 
   (function createText() {
     for (var i = 0; i < codeText.length; i++) {
@@ -15,17 +14,11 @@ $(document).ready(function() {
   })();
 
   $(document).on("keypress", function( event ) {
-      Game.start(event.keyCode, codeText, timer);
-    });
-
-
+    Game.start(event.keyCode);
+  });
 
   $(document).one("keypress", function( event ){
-    timer = new Timer();
-    timer.startTimer();
-    // setInterval(function(){
-    //   document.getElementById('audio').play();
-    // }, 10000);
+    Timer.startTimer();
   });
 
 });

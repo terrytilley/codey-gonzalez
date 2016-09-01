@@ -1,24 +1,15 @@
-
-
 var Game = (function () {
 
   var currentCharIndex = 0;
   var incorrectCount = 0;
-  var timer;
 
-  function markChar(type, codeText) {
-    var currentChar = document.getElementById('code').children[currentCharIndex];
-      currentChar.setAttribute('class', type);
+  function markChar(type) {
     var nextChar = document.getElementById('code').children[currentCharIndex+1];
-    if (type === 'correct') {
-      currentChar.setAttribute('style', 'background-color: #00ff94');
-      if (currentCharIndex+1 !== codeText.length) {
-        nextChar.setAttribute('style', 'background-color: #0085ff');
-      } // makes sure it doesnt try to style past last char
+    if (type === 'correct' && currentCharIndex+1 !== codeText.length) {
+      $(nextChar).addClass('active');
     }
-    if (type === 'incorrect') {
-      currentChar.setAttribute('style', 'background-color: #ff0000');
-    }
+    var currentChar = document.getElementById('code').children[currentCharIndex];
+      $(currentChar).removeClass('incorrect').removeClass('active').addClass(type);
   }
 
   function pressedKey(keycode) {
@@ -29,40 +20,39 @@ var Game = (function () {
     }
   }
 
-  function compare(key, codeText, timer) {
+  function compare(key) {
     if(key === codeText[currentCharIndex]) {
-      markChar('correct', codeText);
+      markChar('correct');
       ++currentCharIndex;
       if(currentCharIndex === codeText.length){
-        endGame(codeText, timer);
+        endGame();
       }
     } else {
       beep();
-      markChar('incorrect', codeText);
+      markChar('incorrect');
       ++incorrectCount;
     }
   }
 
-  function endGame(codeText, timer){
+  function endGame(){
     document.getElementById('audio').play();
-    timer.endTimer();
-    Results.accuracy(codeText, incorrectCount);
-    Results.wpm(codeText, timer);
-    showCodey();
+    Timer.endTimer();
+    Results.accuracy(incorrectCount);
+    Results.wpm();
     Results.score();
-    $.post("/games",
-      { game:{
-        accuracy: accuracyScore,
-        score: totalScore,
-        wpm: wordsPerMin,
-        duration: timer.getTime(),
-      }});
+    showCodey();
+    sendData();
     playAgain();
   }
 
-  function stopAudio(){
-    document.getElementById('audio').pause();
-    audio.src = audio.src;
+  function sendData() {
+    $.post("/games",
+      { game:{
+        accuracy: Results.getAccuracy(),
+        wpm: Results.getWordsPerMin(),
+        score: Results.getTotalScore(),
+        duration: Timer.getTime(),
+      }});
   }
 
   function playAgain() {
@@ -73,10 +63,10 @@ var Game = (function () {
     $('#codey').removeClass('hidden');
   }
 
-return {
-  start: function(keycode, codeText, timer) {
-    compare(pressedKey(keycode), codeText, timer);
-  }
-};
+  return {
+    start: function(keycode) {
+      compare(pressedKey(keycode));
+    }
+  };
 
 })();
