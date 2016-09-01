@@ -1,34 +1,12 @@
-$(document).ready(function() {
 
-  var codeText = document.getElementById('test-string').innerHTML.split('');
+
+var Game = (function () {
+
   var currentCharIndex = 0;
   var incorrectCount = 0;
   var timer;
-  var accuracyScore;
-  var wordsPerMin;
-  var totalScore;
 
-  (function createText() {
-    for (var i = 0; i < codeText.length; i++) {
-      var span = document.createElement('span');
-      var char = document.createTextNode(codeText[i]);
-      span.appendChild(char);
-      span.setAttribute('class', 'initial');
-      span.setAttribute('id', [i]);
-      document.getElementById('code').appendChild(span);
-    }
-
-  })();
-
-  $(document).one("keypress", function( event ){
-    timer = new Timer();
-    timer.startTimer();
-    // setInterval(function(){
-    //   document.getElementById('audio').play();
-    // }, 10000);
-  });
-
-  function markChar(type) {
+  function markChar(type, codeText) {
     var currentChar = document.getElementById('code').children[currentCharIndex];
       currentChar.setAttribute('class', type);
     var nextChar = document.getElementById('code').children[currentCharIndex+1];
@@ -43,12 +21,6 @@ $(document).ready(function() {
     }
   }
 
-  (function typing() {
-    $(document).on("keypress", function( event ) {
-      compare(pressedKey(event.keyCode), codeText);
-    });
-  })();
-
   function pressedKey(keycode) {
     if (keycode === 13) {
   		return '\n';
@@ -57,27 +29,27 @@ $(document).ready(function() {
     }
   }
 
-  function compare(key, codeText) {
+  function compare(key, codeText, timer) {
     if(key === codeText[currentCharIndex]) {
-      markChar('correct');
+      markChar('correct', codeText);
       ++currentCharIndex;
       if(currentCharIndex === codeText.length){
-        endGame();
+        endGame(codeText, timer);
       }
     } else {
       beep();
-      markChar('incorrect');
+      markChar('incorrect', codeText);
       ++incorrectCount;
     }
   }
 
-  function endGame(){
+  function endGame(codeText, timer){
     document.getElementById('audio').play();
     timer.endTimer();
-    accuracy();
-    wpm();
+    Results.accuracy(codeText, incorrectCount);
+    Results.wpm(codeText, timer);
     showCodey();
-    score();
+    Results.score();
     $.post("/games",
       { game:{
         accuracy: accuracyScore,
@@ -93,22 +65,6 @@ $(document).ready(function() {
     audio.src = audio.src;
   }
 
-  function accuracy(){
-    accuracyScore = (Math.round(100 - (incorrectCount / codeText.length) * 100));
-    $('#accuracy').text("Accuracy: " + accuracyScore + "%");
-  }
-
-  function wpm() {
-    wordsPerMin = parseFloat((codeText.length / 5) / ( timer.getTime() / 60.00)).toFixed(2);
-    $('#wpm').text("Words per minute: " + wordsPerMin);
-  }
-
-
-  function score() {
-    totalScore = Math.round(((accuracyScore / 100.00 ) * wordsPerMin) * 20);
-    $('#score').text("Score: " + totalScore);
-  }
-
   function playAgain() {
     $('#play-again').removeClass('hidden');
   }
@@ -117,4 +73,10 @@ $(document).ready(function() {
     $('#codey').removeClass('hidden');
   }
 
-});
+return {
+  start: function(keycode, codeText, timer) {
+    compare(pressedKey(keycode), codeText, timer);
+  }
+};
+
+})();
