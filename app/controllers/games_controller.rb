@@ -12,7 +12,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:accuracy, :wpm, :score)
+    params.require(:game).permit(:accuracy, :wpm, :score, :duration)
   end
 
 end
