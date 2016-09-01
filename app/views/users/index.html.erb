@@ -1,26 +1,31 @@
 <div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Leader Board</div>
+  <div class="text-center panel-heading"><h2><b>Average Scores</b></h2></div>
 
   <table class="table table-striped">
     <thead>
       <tr>
+        <th>#</th>
         <th>User</th>
+        <th>Accuracy(%)</th>
         <th>WPN</th>
-        <th>Accuracy</th>
+        <th>Time(s)</th>
         <th>Score</th>
       </tr>
     </thead>
     <tbody>
+      <% count = 1 %>
       <% @users.each do |user| %>
+        <% if user.games.any? %>
         <tr>
-          <td><%=user.email%></td>
-          <% user.games.each do |game|%>
-            <td><%=game.accuracy%></td>
-            <td><%=game.wpm%></td>
-            <td><%=game.score %></td>
-          <% end %>
+          <th scope="row"><%= count %></th>
+          <td><%=user.email.split('@')[0]%></td>
+          <td><%= user.average_accuracy(user) %></td>
+          <td><%= user.average_score(user) %></td>
+          <td><%= user.average_score(user) %></td>
+          <td><%= user.average_score(user) %></td>
         </tr>
+        <% count += 1 %>
+        <% end %>
       <% end %>
     </tbody>
   </table>

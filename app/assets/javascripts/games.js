@@ -76,7 +76,6 @@ $(document).ready(function() {
     timer.endTimer();
     accuracy();
     wpm();
-    playAgain();
     showCodey();
     score();
     $.post("/games",
@@ -86,6 +85,7 @@ $(document).ready(function() {
         wpm: wordsPerMin,
         duration: timer.getTime(),
       }});
+    playAgain();
   }
 
   function stopAudio(){

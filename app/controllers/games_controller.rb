@@ -1,12 +1,13 @@
 class GamesController < ApplicationController
-  respond_to :js, :json, :html
 
   def new
     @game = Game.new
   end
 
   def create
-    @game = current_user.games.build_with_user(game_params, current_user)
+    if user_signed_in?
+      @game = current_user.games.create_with_user(game_params, current_user)
+    end
   end
 
   private

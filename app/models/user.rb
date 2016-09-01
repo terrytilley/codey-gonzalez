@@ -17,4 +17,44 @@ class User < ApplicationRecord
     end
   end
 
+  def average_accuracy(user)
+    total = 0
+    count = 0
+    user.games.each do |game|
+        count += 1
+        total += game.accuracy
+    end
+    return total/count
+  end
+
+  def average_wpm(user)
+    total = 0
+    count = 0
+    user.games.each do |game|
+        count += 1
+        total += game.wpm
+    end
+    return total/count
+  end
+
+  def average_time(user)
+    total = 0
+    count = 0
+    user.games.each do |game|
+        count += 1
+        total += game.duration
+    end
+    return total/count
+  end
+
+  def average_score(user)
+    total = 0
+    count = 0
+    user.games.each do |game|
+        count += 1
+        total += game.score
+    end
+    return total/count
+  end
+
 end
