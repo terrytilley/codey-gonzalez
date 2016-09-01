@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on("turbolinks:load", (function(){
 
   var codeText = document.getElementById('test-string').innerHTML.split('');
   var currentCharIndex = 0;
@@ -117,4 +117,4 @@ $(document).ready(function() {
     $('#codey').removeClass('hidden');
   }
 
-});
+}));
