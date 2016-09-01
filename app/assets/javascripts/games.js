@@ -51,7 +51,7 @@ $(document).ready(function() {
 
   function pressedKey(keycode) {
     if (keycode === 13) {
-  			return '\n';
+  		return '\n';
     } else {
       return String.fromCharCode(keycode);
     }
@@ -60,12 +60,12 @@ $(document).ready(function() {
   function compare(key, codeText) {
     if(key === codeText[currentCharIndex]) {
       markChar('correct');
-     ++currentCharIndex;
-     if(currentCharIndex === codeText.length){
-       endGame();
-     }
-   } else {
-       beep();
+      ++currentCharIndex;
+      if(currentCharIndex === codeText.length){
+        endGame();
+      }
+    } else {
+      beep();
       markChar('incorrect');
       ++incorrectCount;
     }
