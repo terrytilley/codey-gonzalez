@@ -2,6 +2,7 @@
   <audio style="visibility: hidden" controls="controls" id="audio">
     <source src="/assets/Andalay.mp3" type="audio/mp3" />
   </audio>
+<<<<<<< HEAD
 
   <div id="container">
     <h1 id='start-typing'>Start typing to begin...</h1><br>
@@ -10,6 +11,16 @@
   <h4><%= @code.language.capitalize %> | <%= @code.difficulty(@code.level) %></h4>
   <div hidden id="test-string"><%= @code.content %></div>
 
+=======
+
+  <h2>Language: <%= @code.language %></h2>
+  <h3>Difficulty: <%= @code.level %></h3>
+  <div hidden id="test-string"><%= @code.content %></div>
+
+<div id="container">
+  <h1 id='start-typing'>Start typing to begin...</h1><br>
+<div id="container">
+>>>>>>> a62cb9cef5045c25be599ef7c45a95caf72f57ad
 
   <div id="prompt-container">
     <pre id="code"></pre>

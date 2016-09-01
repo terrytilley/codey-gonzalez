@@ -1,13 +1,23 @@
 <h1>Hello <%=current_user.email%></h1>
 
     <div class="panel panel-default">
-      <div class="panel-heading">Summary</div>
-
+      <div class="panel-heading"><b>Average Summary</b></div>
+      <div class="panel-body">
+        <% if @user.games.any? %>
+            Accuracy  <%= current_user.average_accuracy(current_user) %>
+            WPN  <%= current_user.average_wpm(current_user) %>
+            Time  <%= current_user.average_time(current_user) %>
+            Score <%= current_user.average_score(current_user) %>
+        <% end %>
+      </div>
+    </div>
+    <div class="panel panel-default">
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>WPN</th>
             <th>Accuracy</th>
+            <th>WPN</th>
+            <th>Time</th>
             <th>Score</th>
           </tr>
         </thead>
@@ -16,6 +26,7 @@
               <tr>
                 <td><%=game.accuracy%></td>
                 <td><%=game.wpm%></td>
+                <td><%=game.duration%></td>
                 <td><%=game.score %></td>
               </tr>
             <% end %>
