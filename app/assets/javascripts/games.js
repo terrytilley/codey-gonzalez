@@ -41,9 +41,23 @@ var Game = (function () {
     Results.accuracy(incorrectCount);
     Results.wpm();
     Results.score();
+    resultHeading();
     showCodey();
     sendData();
     playAgain();
+  }
+
+  function resultHeading() {
+    console.log(Results.getTotalScore());
+    if (Results.getTotalScore() > 1000) {
+      $('#start-typing').text('Whoa señor, slow down muy rapido for the eyes to follow!');
+    } else if (Results.getTotalScore() > 800) {
+      $('#start-typing').text('Magnífico!');
+    } else if (Results.getTotalScore() > 500) {
+      $('#start-typing').text('Keep at it amigo!');
+    } else {
+      $('#start-typing').text('No no no señor! You must do better');
+    }
   }
 
   function sendData() {
