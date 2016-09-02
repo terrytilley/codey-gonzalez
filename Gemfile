@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 gem 'jquery-turbolinks'
-
 # Users
 gem 'devise'
 # GitHub Authentication
