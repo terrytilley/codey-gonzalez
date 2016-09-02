@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 gem 'jquery-turbolinks'
-gem 'selenium-webdriver'
 # Users
 gem 'devise'
 # GitHub Authentication
