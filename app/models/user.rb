@@ -17,6 +17,14 @@ class User < ApplicationRecord
     end
   end
 
+  def highest_score(user)
+    scores = []
+    user.games.each do |game|
+      scores << game.score
+    end
+    return scores.sort.reverse[0]
+  end
+
   def average_accuracy(user)
     total = 0
     count = 0

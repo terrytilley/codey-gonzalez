@@ -7,9 +7,9 @@
     <tr>
       <th>#</th>
       <th>User</th>
-      <th>Accuracy (%)</th>
-      <th>WPM</th>
-      <th>Score</th>
+      <!-- <th>Accuracy (%)</th>
+      <th>WPM</th> -->
+      <th>Highest Score</th>
     </tr>
   </thead>
   <tbody>
@@ -19,9 +19,9 @@
       <tr>
         <th scope="row"><%= count %></th>
         <td><%=user.email.split('@')[0]%></td>
-        <td><%= user.average_accuracy(user) %></td>
-        <td><%= user.average_wpm(user) %></td>
-        <td><%= user.average_score(user) %></td>
+        <!-- <td><%= user.average_accuracy(user) %></td>
+        <td><%= user.average_wpm(user) %></td> -->
+        <td><%= user.highest_score(user) %></td>
       </tr>
       <% count += 1 %>
       <% end %>
