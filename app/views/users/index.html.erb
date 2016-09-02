@@ -12,7 +12,9 @@
   </thead>
   <tbody>
     <% count = 1 %>
-    <% @users.each do |user| %>
+    <% @sorted = [] %>
+    <% @sorted = @users.sort_by {|user| user.highest_score(user)}.reverse%>
+    <% @sorted.each do |user| %>
       <% if user.games.any? %>
       <tr>
         <th scope="row"><%= count %></th>
@@ -24,3 +26,7 @@
     <% end %>
   </tbody>
 </table>
+
+<!-- <% @sorted = [] %>
+<% @sorted = @users.sort_by {|user| user.highest_score(user)}.reverse%>
+<%= @sorted %> -->
