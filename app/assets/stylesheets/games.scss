@@ -40,9 +40,13 @@ span.active {
 
 #timer {
   font-size: 24px;
-  margin-left: 0px;
+  margin-left: 70px;
   position: absolute;
   top: -5px;
+}
+
+#timer i {
+  margin-right: 7px;
 }
 
 button.hidden {
@@ -51,4 +55,9 @@ button.hidden {
 
 .type-info {
   margin-bottom: 15px;
+}
+
+.sign-in-prompt {
+  padding-top: 1rem;
+  text-align: center;
 }

@@ -8,11 +8,11 @@
     <h1 id="start-typing">Start typing to begin...</h1>
 
     <div class="row type-info">
-      <div class="col-sm-11">
+      <div class="col-sm-10">
         <div class="code-type"><b><%= @code.language.capitalize %></b> | <%= @code.difficulty(@code.level) %></div>
       </div>
 
-      <div class="col-sm-1">
+      <div class="col-sm-2">
         <div id="timer"></div>
       </div>
     </div>
@@ -22,6 +22,12 @@
     <div id="prompt-container">
       <pre id="code"></pre>
     </div>
+
+    <% if !user_signed_in? %>
+    <div class="sign-in-prompt">
+      <p>Why not <a href="/users/sign_up">sign up</a> to track your score against our global <a href="/users">leaderboard</a>.</p>
+    </div>
+    <% end %>
 
     <div class="row">
       <div class="col-sm-6">
