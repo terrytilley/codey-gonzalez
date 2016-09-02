@@ -10,6 +10,14 @@
   </head>
 
   <body>
+    <% if notice %>
+      <div class="alert alert-info" role="alert"><%= notice %></div>
+    <% end %>
+
+    <% if alert %>
+      <div class="alert alert-danger"><%= alert %></div>
+    <% end %>
+
     <div class="wrapper">
       <nav class="navbar navbar-default">
         <div class="container">
@@ -46,14 +54,6 @@
       </nav>
 
       <div class="container">
-        <% if notice %>
-          <div class="alert alert-info" role="alert"><%= notice %></div>
-        <% end %>
-
-        <% if alert %>
-        <p class="alert"><%= alert %></p>
-        <% end %>
-
         <%= yield %>
       </div>
     </div>
