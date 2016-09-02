@@ -23,6 +23,23 @@
 $red:   #E63946;
 $green: #042A2B;
 
+.alert {
+  margin-bottom: 0;
+  position: absolute;
+  top: 0;
+  z-index: 200;
+  width: 100%;
+  text-align: center;
+}
+
+.alert-info {
+  background-color: rgba(217, 237, 247, .9);
+}
+
+.alert-danger {
+  background-color: rgba(242, 222, 222, .9);
+}
+
 .actions {
   margin-bottom: 10px;
 }
