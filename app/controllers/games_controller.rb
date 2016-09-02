@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
 
   def index
-    @code = Code.find(rand(1..5))
+    @code = Code.find(rand(1..6))
   end
 
   def new
