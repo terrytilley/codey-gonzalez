@@ -8,10 +8,12 @@ return {
 
   startTimer: function(){
     var start = new Date();
+    $("#timer").addClass('timerStarted');
     globalTimer = setInterval(function() {
       seconds = ((new Date() - start) / parseFloat(1000)).toFixed(2);
       $('#timer').text(seconds);
     }, 10);
+
   },
 
   endTimer: function(){
