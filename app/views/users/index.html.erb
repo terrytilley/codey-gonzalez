@@ -14,13 +14,13 @@
   </thead>
   <tbody>
     <% count = 1 %>
-    <% @users.each do |user| %>
+    <% @sorted = [] %>
+    <% @sorted = @users.sort_by {|user| user.highest_score(user)}.reverse%>
+    <% @sorted.each do |user| %>
       <% if user.games.any? %>
       <tr>
         <th scope="row"><%= count %></th>
         <td><%=user.email.split('@')[0]%></td>
-        <!-- <td><%= user.average_accuracy(user) %></td>
-        <td><%= user.average_wpm(user) %></td> -->
         <td><%= user.highest_score(user) %></td>
       </tr>
       <% count += 1 %>
@@ -28,3 +28,7 @@
     <% end %>
   </tbody>
 </table>
+
+<!-- <% @sorted = [] %>
+<% @sorted = @users.sort_by {|user| user.highest_score(user)}.reverse%>
+<%= @sorted %> -->
