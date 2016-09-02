@@ -23,6 +23,12 @@
       <pre id="code"></pre>
     </div>
 
+    <% if !user_signed_in? %>
+    <div class="sign-in-prompt">
+      <p>Why not <a href="/users/sign_up">sign up</a> to track your score against our global <a href="/users">leaderboard</a>.</p>
+    </div>
+    <% end %>
+
     <div class="row">
       <div class="col-sm-6">
         <div id="results">
