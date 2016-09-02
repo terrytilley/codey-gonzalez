@@ -13,9 +13,9 @@
   <tbody>
     <% count = 1 %>
     <% @sorted = [] %>
-    <% @sorted = @users.sort_by {|user| user.highest_score(user)}.reverse%>
     <% @sorted.each do |user| %>
       <% if user.games.any? %>
+      <% @sorted = @users.sort_by {|user| user.highest_score(user)}.reverse%>
       <tr>
         <th scope="row"><%= count %></th>
         <td><%=user.email.split('@')[0]%></td>
