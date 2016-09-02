@@ -10,7 +10,7 @@ return {
     var start = new Date();
     globalTimer = setInterval(function() {
       seconds = ((new Date() - start) / parseFloat(1000)).toFixed(2);
-      $('#timer').text(seconds);
+      $('#timer').html('<i class="fa fa-clock-o" aria-hidden="true"></i>' + seconds);
     }, 10);
   },
 

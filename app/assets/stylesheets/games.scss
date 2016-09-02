@@ -40,9 +40,13 @@ span.active {
 
 #timer {
   font-size: 24px;
-  margin-left: 0px;
+  margin-left: 70px;
   position: absolute;
   top: -5px;
+}
+
+#timer i {
+  margin-right: 7px;
 }
 
 button.hidden {
