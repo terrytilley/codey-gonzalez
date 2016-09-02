@@ -46,13 +46,14 @@ var Game = (function () {
   }
 
   function sendData() {
-    $.post("/games",
-      { game:{
+    $.post("/games", {
+      game: {
         accuracy: Results.getAccuracy(),
         wpm: Results.getWordsPerMin(),
         score: Results.getTotalScore(),
         duration: Timer.getTime(),
-      }});
+      }
+    });
   }
 
   function playAgain() {
