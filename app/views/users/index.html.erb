@@ -7,16 +7,14 @@
     <tr>
       <th>#</th>
       <th>User</th>
-      <!-- <th>Accuracy (%)</th>
-      <th>WPM</th> -->
       <th>Highest Score</th>
     </tr>
   </thead>
   <tbody>
     <% count = 1 %>
-
-    <!-- <% @sorted = @users.sort_by {|user| user.highest_score(user)}.reverse %> -->
-    <% @users.each do |user| %>
+    <% @users_with_score = @users.select {|user| user.highest_score(user)} %>
+    <% @sorted = @users_with_score.sort_by {|user| user.highest_score(user)}.reverse%>
+    <% @sorted.each do |user| %>
     <% if user.games.any? %>
       <tr>
         <th scope="row"><%= count %></th>
