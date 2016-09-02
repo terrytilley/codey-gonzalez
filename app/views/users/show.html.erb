@@ -8,7 +8,7 @@
         <% if @user.games.any? %>
         <div class="row">
           <div class="col-sm-3 text-left">
-            <b>Accuracy:</b> <%= current_user.average_accuracy(current_user) %>%
+            <b>Accuracy:</b> <%= current_user.average_accuracy(current_user) %> %
           </div>
 
           <div class="col-sm-3 text-left">
@@ -16,7 +16,7 @@
           </div>
 
           <div class="col-sm-3 text-left">
-            <b>Time:</b> <%= current_user.average_time(current_user) %>
+            <b>Time:</b> <%= current_user.average_time(current_user) %> s
           </div>
 
           <div class="col-sm-3 text-left">
@@ -30,9 +30,9 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Accuracy</th>
+          <th>Accuracy (%)</th>
           <th>WPM</th>
-          <th>Time</th>
+          <th>Time (s)</th>
           <th>Score</th>
         </tr>
       </thead>

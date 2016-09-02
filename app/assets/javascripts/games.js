@@ -37,6 +37,7 @@ var Game = (function () {
   function endGame(){
     document.getElementById('audio').play();
     Timer.endTimer();
+    Timer.printTimer();
     Results.accuracy(incorrectCount);
     Results.wpm();
     Results.score();

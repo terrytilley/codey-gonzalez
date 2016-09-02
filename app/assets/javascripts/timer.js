@@ -2,6 +2,7 @@ var Timer = (function(){
 
   var seconds;
   var endTime;
+  var globalTimer;
 
 return {
 
@@ -14,9 +15,13 @@ return {
   },
 
   endTimer: function(){
+    clearInterval(globalTimer);
     $('#timer').remove();
-    $('#result-time').text("You finished in " + seconds + " seconds.").fadeIn();
     endTime = seconds;
+  },
+
+  printTimer: function(){
+    $('#result-time').text("You finished in " + seconds + " seconds.").fadeIn();
   },
 
   getTime: function(){
