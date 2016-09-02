@@ -8,7 +8,9 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'web_helper'
 require 'capybara/poltergeist'
-Capybara.javascript_driver = :poltergeist
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, js_errors: false)
+end
 require 'support/database_cleaner'
 # Add additional requires below this line. Rails is not loaded until this point!
 
