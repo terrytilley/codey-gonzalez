@@ -23,12 +23,12 @@ $(document).on("turbolinks:load", (function(){
   });
 
   $(document).on('keydown', function(event) {
-   if (event.keyCode == 9) {
-     event.preventDefault();
-     var e = $.Event('keypress');
-     e.keyCode = 32;
-     $(document).trigger(e);
-     $(document).trigger(e);
+    if (event.keyCode == 9) {
+      event.preventDefault();
+      var e = $.Event('keypress');
+      e.keyCode = 32;
+      $(document).trigger(e);
+      $(document).trigger(e);
     }
   });
 
