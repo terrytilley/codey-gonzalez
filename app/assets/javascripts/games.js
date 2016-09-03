@@ -41,23 +41,26 @@ var Game = (function () {
     Results.accuracy(incorrectCount);
     Results.wpm();
     Results.score();
-    resultHeading();
+    resultHeading(Results.getTotalScore());
     showCodey();
     sendData();
     playAgain();
   }
 
-  function resultHeading() {
-    console.log(Results.getTotalScore());
-    if (Results.getTotalScore() > 1000) {
-      $('#start-typing').text('Whoa señor, slow down muy rapido for the eyes to follow!');
-    } else if (Results.getTotalScore() > 800) {
-      $('#start-typing').text('Magnífico!');
-    } else if (Results.getTotalScore() > 500) {
-      $('#start-typing').text('Keep at it amigo!');
+  function resultHeading(score) {
+    if (score > 1000) {
+      insertText('#start-typing','Whoa señor, slow down muy rapido for the eyes to follow!');
+    } else if (score > 800) {
+      insertText('#start-typing','Magnífico!');
+    } else if (score > 500) {
+      insertText('#start-typing','Keep at it amigo!');
     } else {
-      $('#start-typing').text('No no no señor! You must do better');
+      insertText('#start-typing','No no no señor! You must do better');
     }
+  }
+
+  function insertText(selector, input) {
+    $(selector).text(input);
   }
 
   function sendData() {
