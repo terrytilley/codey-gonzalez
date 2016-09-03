@@ -40,7 +40,6 @@ feature "User can 'Sign In' and 'Sign Out'" do
 
     it 'should increase game count to 1' do
       count = Game.count
-      puts count
       expect(count).to eq(1)
     end
 

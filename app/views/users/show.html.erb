@@ -8,19 +8,20 @@
         <% if @user.games.any? %>
         <div class="row">
           <div class="col-sm-3 text-left">
-            <b>Accuracy:</b> <%= current_user.average_accuracy(current_user) %> %
+            <% @average = @user.average_results(@user.games) %>
+            <b>Accuracy:</b> <%= @average[:accuracy] %> %
           </div>
 
           <div class="col-sm-3 text-left">
-            <b>WPM:</b> <%= current_user.average_wpm(current_user) %>
+            <b>WPM:</b> <%= @average[:wpm] %>
           </div>
 
           <div class="col-sm-3 text-left">
-            <b>Time:</b> <%= current_user.average_time(current_user) %> s
+            <b>Time:</b> <%= @average[:time] %> s
           </div>
 
           <div class="col-sm-3 text-left">
-            <b>Score:</b> <%= current_user.average_score(current_user) %>
+            <b>Score:</b> <%= @average[:score] %>
           </div>
         </div>
         <% end %>

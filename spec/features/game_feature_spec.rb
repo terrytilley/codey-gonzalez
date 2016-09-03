@@ -11,7 +11,7 @@ feature "a game can be played" do
       end
     end
 
-    it 'should highlight a letter when a game starts', js:true do
+    it 'should highlight a letter when a game starts', js: true do
       visit('/')
       find("body").native.send_key("h")
       expect(page).to satisfy {|page| page.has_css?('.correct') or page.has_css?('.incorrect')}

@@ -2,8 +2,7 @@ class User < ApplicationRecord
   has_many :games,
   -> { extending WithUserAssociationExtension },
   dependent: :destroy
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
@@ -25,45 +24,12 @@ class User < ApplicationRecord
     return scores.sort.reverse[0]
   end
 
-  def average_accuracy(user)
-    total = 0
-    count = 0
-    user.games.each do |game|
-        count += 1
-        total += game.accuracy
-    end
-    return total/count
-  end
-
-  def average_wpm(user)
-    total = 0
-    count = 0
-    user.games.each do |game|
-        count += 1
-        total += game.wpm
-    end
-    return total/count
-  end
-
-  def average_time(user)
-    total = 0
-    count = 0
-    user.games.each do |game|
-        count += 1
-        total += game.duration
-    end
-    return total/count
-  end
-
-  def average_score(user)
-    total = 0
-    count = 0
-    user.games.each do |game|
-        count += 1
-        puts game.score
-        total += game.score
-    end
-    return total/count
+  def average_results(user)
+    { accuracy: user.average(:accuracy).to_i,
+      wpm: user.average(:wpm).to_i,
+      time: user.average(:duration).to_i,
+      score: user.average(:score).to_i,
+    }
   end
 
 end
