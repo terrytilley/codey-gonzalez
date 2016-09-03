@@ -8,7 +8,6 @@ $(document).on("turbolinks:load", (function(){
       var char = document.createTextNode(codeText[i]);
       span.appendChild(char);
       span.setAttribute('class', 'initial');
-      span.setAttribute('id', [i]);
       document.getElementById('code').appendChild(span);
     }
   })();
