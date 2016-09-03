@@ -8,7 +8,9 @@ $(document).on("turbolinks:load", (function(){
       var char = document.createTextNode(codeText[i]);
       span.appendChild(char);
       span.setAttribute('class', 'initial');
-      span.setAttribute('id', [i]);
+      if (codeText[i] === "\n") {
+        span.setAttribute('class', 'return');
+      }
       document.getElementById('code').appendChild(span);
     }
   })();

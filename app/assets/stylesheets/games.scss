@@ -27,6 +27,12 @@ span.active {
   background-color: #2971d1;
 }
 
+span.active.return::before {
+  content: '\23CE';
+  color: white;
+  padding: 0 .5em;
+}
+
 #code {
   font-size: 2rem;
 }
