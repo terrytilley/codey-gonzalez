@@ -28,9 +28,16 @@ span.active {
 }
 
 span.active.return::before {
-  content: '\23CE';
+  content: '\21B2';
   color: white;
-  padding: 0 .5em;
+  padding: 0 10px;
+}
+
+span.return.incorrect::before {
+  content: '\21B2';
+  color: white;
+  background-color: red;
+  padding: 0 10px;
 }
 
 #code {
