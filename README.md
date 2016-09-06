@@ -1,8 +1,5 @@
 # Codey Gonzales
 
-A speed type racer for code
+## A speed type racer for code
 
-Rspec init
-```
-bin/rails generate rspec:install
-```
+[Play the game on Heroku](http://codey-gonzalez.herokuapp.com/)
